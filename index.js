@@ -9,7 +9,13 @@ const app = express();
 // 1. path
 // 2. callback function that takes request & response
 app.get('/', (req, res) => {
-	res.json(names);
+    const filter = names.map((i) => {
+        // destructuring to extract and separate object properties
+        const { fname, lname } = i;
+        // render specific property
+        return { fname };
+	});
+	res.json(filter);
 });
 
 // create a server using express

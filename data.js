@@ -18,4 +18,4 @@ const names = [
 ];
 
 // syntax to export defaults
-module.exports = { names };
+module.exports = names;
