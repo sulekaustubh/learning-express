@@ -1,8 +1,10 @@
 • npm init - creates a package.json file from scratch
 
+• node.js - provides a runtime environment for JavaScript to run outside of browesr
+• express.js - a node.js framework that makes it easy to build backend servers
+
+•
 • nodemon - restarts the node server on every file change
-•
-•
 •
 •
 •

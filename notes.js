@@ -5,9 +5,6 @@ const path = require('path');
 // create an instance of express
 const app = express();
 
-// for using middlewares
-// app.use()
-
 // these routing functions take 2 arguements
 // 1. path
 // 2. callback function that takes request & response
