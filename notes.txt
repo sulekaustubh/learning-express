@@ -6,5 +6,7 @@
 •
 • nodemon - restarts the node server on every file change
 •
-•
-•
+
+In the following backend code 
+:id represents parameters received in request
+app.get('/:id', (req, res) => { });
