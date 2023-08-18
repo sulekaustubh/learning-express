@@ -1,1 +1,8 @@
 • npm init - creates a package.json file from scratch
+
+• nodemon - restarts the node server on every file change
+•
+•
+•
+•
+•
