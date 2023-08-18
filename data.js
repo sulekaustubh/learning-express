@@ -1,15 +1,19 @@
 const names = [
 	{
-		fname: 'Kaustubh',
+        fname: 'Bruce',
+        lname: 'Banners'
 	},
 	{
-		fname: 'Sonal',
+        fname: 'Steve',
+        lname: 'Rogers'
 	},
 	{
-		fname: 'Arun',
+        fname: 'Tony',
+        lname: 'Stark'
 	},
 	{
-		fname: 'Chitra',
+        fname: 'Bruce',
+        lname: 'Wayne'
 	},
 ];
 
