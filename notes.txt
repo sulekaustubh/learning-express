@@ -1,0 +1,1 @@
+• npm init - creates a package.json file from scratch
