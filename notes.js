@@ -81,6 +81,24 @@ app.get('/query', (req, res) => {
 // --------------------------------------------------------------------------------------------
 
 
+// defining custom middlewares
+// they take 3 arguements: req, res and the next middleware to call
+const logger = (req, res, next) => {
+	console.log(
+		` ${new Date()}, Request type: ${req.method}, URL path: ${req.url} `
+	);
+	next();
+};
+
+const logger2 = (req, res, next) => {
+	console.log('mei dusra hu');
+	next();
+};
+
+// using middlewares on specific path
+app.use('/about', [logger, logger2]);
+// --------------------------------------------------------------------------------------------
+
 // create a server using express
 // listen() is an in-built function of express that takes PORT & a callback function
 app.listen(3000, () => {

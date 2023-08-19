@@ -12,3 +12,9 @@
   4. Built-in
   5. Error handling
 
+• Morgan is a middleware that acts as a logger throughout the HTTP request-response cycle.
+  Logs include:
+  1. Status code
+  2. URL path
+  3. Date and Time
+  4. Request and Response

@@ -5,25 +5,17 @@ const names = require('./data');
 // create an instance of express
 const app = express();
 
+// using middlewares
+
 // these routing functions take 2 arguements
 // 1. path
 // 2. callback function that takes request & response
+app.get('/', (req, res) => {
+	res.send('Home');
+});
 
-app.get('/query', (req, res) => {
-	// clone the array 'names' and store it in new variable
-	let sortedQuery = [...names];
-	// destructure to extract search
-	const { search } = req.query;
-
-	// if any specific query parameter exists
-	if (search) {
-		sortedQuery = sortedQuery.filter((i) => {
-			return i.fname[0].toLowerCase() == search;
-			// return i;
-		});
-	}
-
-	res.json(sortedQuery);
+app.get('/about', (req, res) => {
+	res.send('about');
 });
 
 // create a server using express
