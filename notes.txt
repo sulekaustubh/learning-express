@@ -18,3 +18,15 @@
   2. URL path
   3. Date and Time
   4. Request and Response
+
+• HTTP Methods:
+  1. GET - fetch and read data
+  2. POST - create new data
+  3. PUT - update existing data
+  4. DELETE - delete data
+
+•
+•
+•
+•
+•
