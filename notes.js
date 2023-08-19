@@ -99,6 +99,40 @@ const logger2 = (req, res, next) => {
 app.use('/about', [logger, logger2]);
 // --------------------------------------------------------------------------------------------
 
+
+// POST method
+// to use the index.html file inside 'public' folder as a static web app
+app.use(express.static('public'));
+
+// to parse the URL-encoded data
+app.use(express.urlencoded({ extended: false }));
+
+// sample data
+let books = [
+	{
+		id: 1,
+		title: 'book 1',
+		author: 'author 1',
+	},
+	{
+		id: 2,
+		title: 'book 2',
+		author: 'author 2',
+	},
+];
+
+app.post('/books', (req, res) => {
+	const newBook = {
+		id: books.length + 1,
+		// upon form submission, req.body contains the values of our interest
+		title: req.body.title,
+		author: req.body.author,
+	};
+    books.push(newBook);
+    res.json(books);
+});
+// --------------------------------------------------------------------------------------------
+
 // create a server using express
 // listen() is an in-built function of express that takes PORT & a callback function
 app.listen(3000, () => {

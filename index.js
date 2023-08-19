@@ -1,21 +1,40 @@
 // require() is an in-built function to import modules
 const express = require('express');
-const names = require('./data');
 
 // create an instance of express
 const app = express();
 
-// using middlewares
+// middlewares
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
 
-// these routing functions take 2 arguements
-// 1. path
-// 2. callback function that takes request & response
-app.get('/', (req, res) => {
-	res.send('Home');
+let books = [
+	{
+		id: 1,
+		title: 'book 1',
+		author: 'author 1',
+	},
+	{
+		id: 2,
+		title: 'book 2',
+		author: 'author 2',
+	},
+];
+
+// GET method
+app.get('/books', (req, res) => {
+	res.json(books);
 });
 
-app.get('/about', (req, res) => {
-	res.send('about');
+// POST method
+app.post('/books', (req, res) => {
+	const newBook = {
+		id: books.length + 1,
+		title: req.body.title,
+		author: req.body.author,
+	};
+    books.push(newBook);
+    res.json(books);
 });
 
 // create a server using express
