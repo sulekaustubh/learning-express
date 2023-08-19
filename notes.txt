@@ -2,9 +2,9 @@
 
 • node.js - provides a runtime environment for JavaScript to run outside of browesr
 • express.js - a node.js framework that makes it easy to build backend servers
-
-•
 • nodemon - restarts the node server on every file change
+
+• Middlewares process the requests received by the server
 •
 
 In the following backend code 

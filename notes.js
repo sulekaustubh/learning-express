@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 // --------------------------------------------------------------------------------------------
 
 
-// parameter based routing
+// parameter based routing using .find()
 app.get('/:id', (req, res) => {
 	const { id } = req.params;
 	const singleName = names.find((i) => i.id === Number(id));
@@ -58,6 +58,25 @@ app.get('/:id', (req, res) => {
 	}
 	
 	res.json(singleName);
+});
+// --------------------------------------------------------------------------------------------
+
+// query based routing using .filter()
+app.get('/query', (req, res) => {
+	// clone the array 'names' and store it in new variable
+	let sortedQuery = [...names];
+	// destructure to extract search
+	const { search } = req.query;
+
+	// if any specific query parameter exists
+	if (search) {
+		sortedQuery = sortedQuery.filter((i) => {
+			return i.fname[0].toLowerCase() == search;
+			// return i;
+		});
+	}
+
+	res.json(sortedQuery);
 });
 // --------------------------------------------------------------------------------------------
 
