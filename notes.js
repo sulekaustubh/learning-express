@@ -131,6 +131,13 @@ app.post('/books', (req, res) => {
     books.push(newBook);
     res.json(books);
 });
+
+app.post('/books', (req, res) => {
+	const newBook = req.body;
+	newBook.id = books.length + 1;
+	books.push(newBook);
+	res.status(201).json(books);
+});
 // --------------------------------------------------------------------------------------------
 
 // create a server using express

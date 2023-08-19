@@ -1,12 +1,8 @@
-// require() is an in-built function to import modules
 const express = require('express');
-
-// create an instance of express
 const app = express();
 
 // middlewares
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 let books = [
 	{
@@ -21,24 +17,17 @@ let books = [
 	},
 ];
 
-// GET method
 app.get('/books', (req, res) => {
 	res.json(books);
 });
 
-// POST method
 app.post('/books', (req, res) => {
-	const newBook = {
-		id: books.length + 1,
-		title: req.body.title,
-		author: req.body.author,
-	};
-    books.push(newBook);
-    res.json(books);
+	const newBook = req.body;
+	newBook.id = books.length + 1;
+	books.push(newBook);
+	res.status(201).json(books);
 });
 
-// create a server using express
-// listen() is an in-built function of express that takes PORT & a callback function
 app.listen(3000, () => {
 	console.log('Server is live');
 });
