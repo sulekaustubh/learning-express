@@ -35,6 +35,20 @@ app.put('/books/:id', (req, res) => {
 	}
 });
 
+app.delete('/books/:id', (req, res) => {
+	const id = parseInt(req.params.id);
+	const index = books.findIndex((book) => book.id === id);
+
+    if (index !== -1) {
+        const deletedBook = books[index];
+        books.splice(index, 1)
+        res.json(deletedBook)
+    }
+    else {
+        res.status(404).json({error: 'Book not found'})
+    }
+});
+
 app.listen(3000, () => {
 	console.log('Server is live');
 });

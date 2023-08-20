@@ -147,7 +147,7 @@ app.put('/books/:id', (req, res) => {
 	const id = parseInt(req.params.id);
 	const updatedBook = req.body;
 	const index = books.findIndex((book) => book.id === id);
-
+	
 	// if book exists
 	if (index !== -1) {
 		books[index] = { ...books[index], ...updatedBook };
@@ -155,6 +155,23 @@ app.put('/books/:id', (req, res) => {
 	} else {
 		res.status(404).json({ error: 'Book not found' });
 	}
+});
+// --------------------------------------------------------------------------------------------
+
+
+// DELETE request
+app.delete('/books/:id', (req, res) => {
+	const id = parseInt(req.params.id);
+	const index = books.findIndex((book) => book.id === id);
+	
+    if (index !== -1) {
+		const deletedBook = books[index];
+        books.splice(index, 1)
+        res.json(deletedBook)
+    }
+    else {
+		res.status(404).json({error: 'Book not found'})
+    }
 });
 // --------------------------------------------------------------------------------------------
 
