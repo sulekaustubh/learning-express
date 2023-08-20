@@ -138,6 +138,24 @@ app.post('/books', (req, res) => {
 	books.push(newBook);
 	res.status(201).json(books);
 });
+
+// PUT request
+// allows us to pass json when using thunderclient or postman
+app.use(express.json());
+
+app.put('/books/:id', (req, res) => {
+	const id = parseInt(req.params.id);
+	const updatedBook = req.body;
+	const index = books.findIndex((book) => book.id === id);
+
+	// if book exists
+	if (index !== -1) {
+		books[index] = { ...books[index], ...updatedBook };
+		res.json(books[index]);
+	} else {
+		res.status(404).json({ error: 'Book not found' });
+	}
+});
 // --------------------------------------------------------------------------------------------
 
 // create a server using express

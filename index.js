@@ -21,11 +21,18 @@ app.get('/books', (req, res) => {
 	res.json(books);
 });
 
-app.post('/books', (req, res) => {
-	const newBook = req.body;
-	newBook.id = books.length + 1;
-	books.push(newBook);
-	res.status(201).json(books);
+app.put('/books/:id', (req, res) => {
+	const id = parseInt(req.params.id);
+	const updatedBook = req.body;
+	const index = books.findIndex((book) => book.id === id);
+
+	// if book exists
+	if (index !== -1) {
+		books[index] = { ...books[index], ...updatedBook };
+		res.json(books[index]);
+	} else {
+		res.status(404).json({ error: 'Book not found' });
+	}
 });
 
 app.listen(3000, () => {
